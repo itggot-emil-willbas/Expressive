@@ -15,7 +15,7 @@ npm init -f
 npm install nodemon eslint
 ```
 
-3.  Anpassa package.json
+3.  Anpassa package.json. 
 ```json
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
