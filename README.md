@@ -5,6 +5,7 @@
 2.  Installera Vue med VueCLI i client-mappen
 
 ## Setup Express, servergrejer
-1.  ```console
+1. Skapa package.json  
+```console
 npm init -f
 ```
