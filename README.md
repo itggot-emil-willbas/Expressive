@@ -9,3 +9,17 @@
 ```console
 npm init -f
 ```
+
+2.  Installera nodemon och eslint
+```console
+npm install nodemon eslint
+```
+
+3.  Anpassa package.json
+```json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'",
+    "lint":"./node_modules/.bin/eslint **/*.js"
+  },
+```
