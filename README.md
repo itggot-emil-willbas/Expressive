@@ -53,9 +53,39 @@ const morgan = require('morgan')
 2.  Bygg upp controllern
 ```javascript
 const app = express()
-app.use(morgan('combine'))
+app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
 app.listen(process.env.PORT || 8081)
 ```
+
+3.  Kör i chrome eller POSTMAN-app/extension:
+```console
+http://localhost:8081/status
+```
+Svaret kommer som JSON-objekt.
+
+## Lite arbete i client-mappen
+
+1.  Installera axios i client för att tala skicka requests till backend
+```console
+npm install --save axios
+```
+
+2.  I client-mappens src-mapp, skapa en mapp "services".Skapa där en fil Api.js (en connector som kan användas med back-end. För att nå olika end points)
+```javascript
+import axios from 'axios'
+
+//exportera en "connector"
+export default () => {
+  return axios.create({
+    baseURL: `http://localhost:8081/`
+  })
+}
+```
+
+3.  Skapa i samma mapp en fil AuthenticationServices.js. Används för att hitting the endpoint som vi ska bygga.
+
+
+
