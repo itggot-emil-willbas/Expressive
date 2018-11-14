@@ -10,6 +10,11 @@ app.use(cors())
 
 app.get('/status', (req, res) => {
   res.send({
+    message: 'Hello Status'
+  })
+})
+app.get('/', (req, res) => {
+  res.send({
     message: 'Hello World!'
   })
 })
