@@ -2,33 +2,20 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const { sequelize } = require('./models') // Det finns en mapp som har index.js som returnerar ett objekt med attributet "sequelize"
+const config = require('./config/config')
 
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/status', (req, res) => {
-  res.send({
-    message: 'Hello Status'
+require('./routes')(app) // Require routes file (en funktion), pass it (the argument) app (hela applikationen)
+
+//  Connect sequelize to whatever db we  have it configured for.
+sequelize.sync()
+  .then(() => {
+  //  When db i synced: start server!
+    app.listen(process.env.PORT || 8081)
+    console.log(`Server started on port ${config.port}`)
   })
-})
-app.get('/', (req, res) => {
-  res.send({
-    message: 'Hello World!'
-  })
-})
-app.get('/helloWorld', function (req, res) {
-  res.send('hello world')
-})
-app.post('/register', (req, res) => {
-  res.send({
-    message: `Hello ${req.body.email}! Your user was registered. Ha det bra!`
-  })
-})
-app.post('/testChunk', (req, res) => {
-  res.send({
-    message: `Hello ${req.body.testWord}! Your user was registered. Ha det bra!`
-  })
-})
-app.listen(process.env.PORT || 8081)

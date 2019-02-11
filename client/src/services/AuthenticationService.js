@@ -10,7 +10,7 @@ export default {
 }
 /* 
 AutenticationService.register({
-  email:'test@test.com'
+  email:'test@test.com', 
   password:'123123'
 })
 */

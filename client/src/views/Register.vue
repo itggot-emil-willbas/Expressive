@@ -33,7 +33,13 @@ export default {
       message:'Byts ut'
     } 
   },
+  watch: {
+    email (value) {
+      console.log('email has changed',value)
+    }
+  },
   methods:  {
+    //async, await: Bättre än promises. Den kallar register-endpointen med payload email, password. Väntar sedan på svar innan den loggar...
     async register () {
       const response =  await AuthenticationService.register({
         email: this.email,
